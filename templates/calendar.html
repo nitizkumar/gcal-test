@@ -1,14 +1,35 @@
 <div id="calendar" class="container-fluid">
     <div class="col-md-2">
         <form action="">
-            <input type="text">
-            <input type="text">
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            <button>Submit</button>
-            <button>Cancel</button>
+            <div class="form-group">
+                <label for="">From</label>
+                <input type="text" class="form-control" ng-model="eventData.start">
+            </div>
+            <div class="form-group">
+                <label for="">To</label>
+                <input type="text" class="form-control" ng-model="eventData.end">
+            </div>
+            <div class="form-group">
+                <label for="">Title</label>
+                <input type="text" class="form-control" ng-model="eventData.title">
+            </div>
+            <div class="form-group">
+                <label for="">Location</label>
+                <input type="text" class="form-control" ng-model="eventData.location">
+            </div>
+            <div class="form-group">
+                <label for="">Description</label>
+                <textarea name="" id="" cols="30" rows="10" class="form-control" ng-model="eventData.description"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" ng-click="createEvent()" type="button">Submit</button>
+                <button class="btn btn-default" type="button">Cancel</button>
+            </div>
+
         </form>
     </div>
     <div class="col-md-10">
-    <full-calendar class="my_calendar" get-event="getEvents()" load-event-for-week="loadEventForWeek(date)" load-event-for-day="loadEventForDay(date)"></full-calendar>
+        <full-calendar class="my_calendar" get-event="getEvents()" load-event-for-week="loadEventForWeek(date)"
+                       load-event-for-day="loadEventForDay(date)" set-time-range="setTimeRange(start,end)" update="updateEvent(sourceEvent)"></full-calendar>
     </div>
 </div>

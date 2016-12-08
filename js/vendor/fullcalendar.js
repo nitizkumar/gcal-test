@@ -9378,7 +9378,7 @@ var View = FC.View = Class.extend(EmitterMixin, ListenerMixin, {
 
 	handleDocumentMousedown: function(ev) {
 		if (isPrimaryMouseButton(ev)) {
-			this.processUnselect(ev);
+			// this.processUnselect(ev);
 		}
 	},
 
@@ -10562,7 +10562,6 @@ function Calendar_constructor(element, overrides) {
 	// If not given a viewType, keep the current view but render different dates.
 	// Accepts an optional scroll state to restore to.
 	function renderView(viewType, forcedScroll) {
-		console.log(viewType);
 
 		ignoreWindowResize++;
 

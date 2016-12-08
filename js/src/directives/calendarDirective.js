@@ -4,7 +4,9 @@ app.directive('fullCalendar', function () {
     scope:{
       getEvent:'&',
       loadEventForWeek:'&',
-      loadEventForDay:'&'
+      loadEventForDay:'&',
+      setTimeRange:'&',
+      update:'&'
     },
     link: function ($scope, $elem, $attr) {
 
@@ -21,17 +23,14 @@ app.directive('fullCalendar', function () {
         selectable: true,
         selectHelper: true,
         select: function(start, end) {
-          var title = prompt('Event Title:');
-          var eventData;
-          if (title) {
-            eventData = {
-              title: title,
-              start: start,
-              end: end
-            };
-            $($elem).fullCalendar('renderEvent', eventData, true); // stick? = true
-          }
-          $($elem).fullCalendar('unselect');
+
+          $scope.setTimeRange({start:start,end:end});
+
+          eventData = {
+            start: start,
+            end: end
+          };
+
         },
         onNext:function(date,viewName){
           if(viewName === 'agendaWeek'){
@@ -52,6 +51,12 @@ app.directive('fullCalendar', function () {
           var view = $($elem).data('fullCalendar').zoomTo(date,'day');
           return true;
         },
+        eventDrop:function(event, delta, revertFunc) {
+          console.log(event);
+          event.sourceEvent.start.dateTime = event.start.format();
+          event.sourceEvent.end.dateTime = event.end.format();
+          $scope.update({sourceEvent:event.sourceEvent});
+        },
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         events: $scope.getEvent(),
@@ -61,10 +66,11 @@ app.directive('fullCalendar', function () {
       $scope.$on('eventAdded',function(event,eventData){
         console.log('eventAdded' + eventData);
         $($elem).fullCalendar('renderEvent', eventData, true);
+        $($elem).fullCalendar('unselect');
       });
 
 
-      
+
     }
   }
 });
