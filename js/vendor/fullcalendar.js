@@ -10563,7 +10563,7 @@ function Calendar_constructor(element, overrides) {
 	// Accepts an optional scroll state to restore to.
 	function renderView(viewType, forcedScroll) {
 		console.log(viewType);
-		
+
 		ignoreWindowResize++;
 
 		var needsClearView = currentView && viewType && currentView.type !== viewType;
@@ -10844,12 +10844,20 @@ function Calendar_constructor(element, overrides) {
 
 	function prev() {
 		date = currentView.computePrevDate(date);
+		if(typeof t.options.onNext === 'function'){
+			var handler = t.options.onPrev;
+			handler(date,getView().name);
+		}
 		renderView();
 	}
 
 
 	function next() {
 		date = currentView.computeNextDate(date);
+		if(typeof t.options.onNext === 'function'){
+			var handler = t.options.onNext;
+			handler(date,getView().name);
+		}
 		renderView();
 	}
 
@@ -11135,7 +11143,7 @@ Calendar.defaults = {
 	endParam: 'end',
 	timezoneParam: 'timezone',
 
-	timezone: false,
+	timezone: 'local',
 
 	//allDayDefault: undefined,
 

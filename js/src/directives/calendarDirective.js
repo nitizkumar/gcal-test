@@ -2,7 +2,9 @@ app.directive('fullCalendar', function () {
   return {
     restricts: 'E',
     scope:{
-      getEvent:'&'
+      getEvent:'&',
+      loadEventForWeek:'&',
+      loadEventForDay:'&'
     },
     link: function ($scope, $elem, $attr) {
 
@@ -14,7 +16,7 @@ app.directive('fullCalendar', function () {
           center: 'title',
           right: 'agendaDay,agendaWeek'
         },
-        defaultDate: '2016-12-12',
+        timezone:'local',
         navLinks: true, // can click day/week names to navigate views
         selectable: true,
         selectHelper: true,
@@ -31,10 +33,34 @@ app.directive('fullCalendar', function () {
           }
           $($elem).fullCalendar('unselect');
         },
+        onNext:function(date,viewName){
+          if(viewName === 'agendaWeek'){
+            $scope.loadEventForWeek({date:date});
+          }else{
+            $scope.loadEventForDay({date:date});
+          }
+        },
+        onPrev:function(date,viewName){
+          if(viewName === 'agendaWeek'){
+            $scope.loadEventForWeek({date:date});
+          }else{
+            $scope.loadEventForDay({date:date});
+          }
+        },
+        navLinkDayClick: function(date, jsEvent) {
+          console.log('day', date.format()); // date is a moment
+          var view = $($elem).data('fullCalendar').zoomTo(date,'day');
+          return true;
+        },
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         events: $scope.getEvent(),
         defaultView:'agendaWeek'
+      });
+
+      $scope.$on('eventAdded',function(event,eventData){
+        console.log('eventAdded' + eventData);
+        $($elem).fullCalendar('renderEvent', eventData, true);
       });
     }
   }

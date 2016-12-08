@@ -1,4 +1,4 @@
-app.controller('loginController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+app.controller('loginController', ['$scope', '$http', '$state','authService',function ($scope, $http, $state,authService) {
 
   var CLIENT_ID = '400154697767-ejegm5o24iovkfn56i44hp4pvisisab8.apps.googleusercontent.com';
 
@@ -19,6 +19,7 @@ app.controller('loginController', ['$scope', '$http', '$state', function ($scope
 
   function handleAuthResult(authResult) {
     console.log(authResult);
+    authService.setAuth(authResult);
     $state.go('calendar');
   }
 }]);
