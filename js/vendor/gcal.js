@@ -65,9 +65,7 @@ FC.sourceNormalizers.push(function(sourceOptions) {
 
 
 FC.sourceFetchers.push(function(sourceOptions, start, end, timezone) {
-	if (sourceOptions.googleCalendarId) {
 		return transformOptions(sourceOptions, start, end, timezone, this); // `this` is the calendar
-	}
 });
 
 

@@ -5,11 +5,25 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
     return;
   }
 
+  this.loadedWeeks = [];
+
   $scope.events = [];
 
+  var _self = this;
   $scope.loadEventForWeek = function (start) {
     var start = moment(new Date(start.toDate()));
     var end = moment(start).endOf('week');
+    var found = false;
+    _self.loadedWeeks.forEach(function (elem) {
+      if(elem.start.isSame(start,'day')){
+        found = true;
+      }
+    })
+
+    if(!found)
+      _self.loadedWeeks.push({start:start});
+    else
+      return;
 
     console.log('start ' + start.format() + "--- end " + end.format() );
     gapi.client.load('calendar', 'v3', function () {

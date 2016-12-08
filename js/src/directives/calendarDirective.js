@@ -62,6 +62,9 @@ app.directive('fullCalendar', function () {
         console.log('eventAdded' + eventData);
         $($elem).fullCalendar('renderEvent', eventData, true);
       });
+
+
+      
     }
   }
 });
