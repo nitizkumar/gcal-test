@@ -1,0 +1,418 @@
+.radius {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.sidebar {
+  background: #2d353c;
+  width: 220px;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+}
+.sidebar .nav-profile {
+  background: #1a2229;
+  padding: 20px;
+}
+.sidebar .image {
+  float: left;
+  width: 34px;
+  height: 34px;
+  margin-left: 2px;
+  margin-right: 15px;
+}
+.sidebar .sidebar_image {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+.sidebar .info {
+  color: #fff;
+  background: #1a2229;
+}
+.sidebar .nav-header {
+  font-size: 11px;
+  line-height: 20px;
+  padding: 10px 20px;
+}
+.sidebar .nav-item.active a.nav-link {
+  background-color: #00acac;
+  color: #ffffff;
+}
+.sidebar .nav-item.active a.nav-link:hover,
+.sidebar .nav-item.active a.nav-link:focus {
+  background-color: #00acac;
+}
+.sidebar .nav-item.active a.nav-link:active {
+  background-color: #00acac;
+}
+.sidebar .nav-item a {
+  padding: 10px 20px;
+  color: #a8acb1;
+}
+.sidebar .nav-item a:hover,
+.sidebar .nav-item a:focus {
+  background-color: #232a2f;
+}
+.sidebar .nav-item a:active {
+  background-color: #232a2f;
+}
+.sidebar .nav-item a .fa {
+  margin-right: 10px;
+}
+.sidebar .nav-item .caret {
+  margin-top: 9px;
+}
+.sidebar .sub-menu {
+  padding: 10px 0 10px 30px;
+  background-color: #1a2229;
+  position: relative;
+}
+.sidebar .sub-menu:before {
+  content: ' ';
+  position: absolute;
+  width: 2px;
+  left: 26px;
+  top: 0;
+  bottom: 0;
+  background: #10181F;
+}
+.sidebar .sub-menu .sub-menu-item {
+  list-style: none;
+  position: relative;
+}
+.sidebar .sub-menu .sub-menu-item:before {
+  content: '\f10c';
+  font-family: 'FontAwesome';
+  position: absolute;
+  font-size: 7px;
+  left: -6px;
+  top: 50%;
+  margin-top: -4px;
+}
+.sidebar .sub-menu .sub-menu-item a {
+  padding: 5px 20px;
+  text-decoration: none;
+  display: block;
+  font-weight: 300;
+  color: #889097;
+}
+.sidebar .sub-menu .sub-menu-item a:hover {
+  color: #fff;
+  background-color: inherit;
+}
+.sidebar .sub-menu .sub-menu-item a:active {
+  color: #fff;
+  background-color: inherit;
+}
+.table th {
+  color: #242a30;
+  font-weight: 600;
+  border-bottom: 2px solid #e2e7eb;
+}
+label {
+  font-weight: 500;
+  color: #242a30;
+}
+.form-control {
+  border: 1px solid #ccd0d4;
+  font-size: 12px;
+  box-shadow: none;
+  -webkit-border-radius: 3px;
+}
+.form-control:focus {
+  border-color: #9fa2a5;
+  outline: 0;
+}
+.btn.btn-primary {
+  background-color: #348fe2;
+  border-color: #348fe2;
+  color: #fff;
+}
+.btn.btn-primary:active:focus {
+  background-color: #348fe2;
+  border-color: #348fe2;
+}
+.btn.btn-success {
+  background-color: #00acac;
+  border-color: #00acac;
+  color: #fff;
+}
+.btn.btn-success:active:focus {
+  background-color: #00acac;
+  border-color: #00acac;
+}
+.pagination li a {
+  color: #242a30;
+}
+/*
+    Note: It is best to use a less version of this file ( see http://css2less.cc
+    For the media queries use @screen-sm-min instead of 768px.
+    For .omb_spanOr use @body-bg instead of white.
+*/
+@media (min-width: 768px) {
+  .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+    margin-left: 25%;
+  }
+}
+.omb_login .omb_authTitle {
+  text-align: center;
+  line-height: 300%;
+}
+.omb_login .omb_socialButtons a {
+  color: white;
+  opacity: 0.9;
+}
+.omb_login .omb_socialButtons a:hover {
+  color: white;
+  opacity: 1;
+}
+.omb_login .omb_socialButtons .omb_btn-facebook {
+  background: #3b5998;
+}
+.omb_login .omb_socialButtons .omb_btn-twitter {
+  background: #00aced;
+}
+.omb_login .omb_socialButtons .omb_btn-google {
+  background: #c32f10;
+}
+.omb_login .omb_loginOr {
+  position: relative;
+  font-size: 1.5em;
+  color: #aaa;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.omb_login .omb_loginOr .omb_hrOr {
+  background-color: #cdcdcd;
+  height: 1px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+.omb_login .omb_loginOr .omb_spanOr {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -0.6em;
+  margin-left: -1.5em;
+  background-color: white;
+  width: 3em;
+  text-align: center;
+}
+.omb_login .omb_loginForm .input-group.i {
+  width: 2em;
+}
+.omb_login .omb_loginForm .help-block {
+  color: red;
+}
+@media (min-width: 768px) {
+  .omb_login .omb_forgotPwd {
+    text-align: right;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    top: 0 !important;
+    display: none !important;
+  }
+  .main {
+    margin-left: 0 !important;
+  }
+}
+@media (max-width: 992px) {
+  .dashboard .widget {
+    margin-bottom: 20px;
+  }
+  .profile_box {
+    margin-bottom: 20px;
+  }
+}
+body {
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #707478;
+  background: #d9e0e7;
+  font-size: 12px;
+}
+.wrapper {
+  width: 100%;
+  position: relative;
+}
+.wrapper nav.navbar {
+  background-color: #ffffff;
+  height: 50px;
+  margin-bottom: 0;
+  box-shadow: 0 0 2px #777777;
+  border-radius: 0;
+  color: #707478;
+}
+.wrapper nav.navbar a {
+  color: #333333;
+  font-weight: 100;
+}
+.main,
+#content-wrapper {
+  margin-left: 220px;
+  background-color: #d9e0e7;
+  min-height: 600px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.header-row {
+  border-bottom: 1px solid #ccc;
+  background: #f3f3f3;
+}
+.header-row .breadcrumb {
+  background: inherit;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.header-row .breadcrumb a {
+  color: #333;
+}
+.header-row .page-name {
+  color: #333333;
+  font-weight: 100;
+  margin-top: 0;
+}
+.content-row {
+  margin-top: 20px;
+}
+.panel {
+  border: none;
+  border-radius: 3px;
+}
+.panel .panel-heading {
+  background-color: #242a30;
+  font-weight: 500;
+  color: #fff;
+}
+.panel .panel-heading .panel-title {
+  font-size: 12px;
+  line-height: 20px;
+}
+.padding-b-15 {
+  padding-bottom: 15px;
+}
+.widget {
+  padding: 15px;
+  border-radius: 3px;
+}
+.widget h4 {
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  margin: 5px 0;
+}
+.widget .fa {
+  color: #fff;
+}
+.widget .stats-icon {
+  height: 56px;
+  width: 56px;
+  font-size: 42px;
+  text-align: center;
+  line-height: 56px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  opacity: 0.5;
+}
+.widget .stats-info p {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 300;
+  margin: 0 0;
+}
+.widget .stats-link a {
+  display: block;
+  margin: 15px -15px -15px;
+  padding: 7px 15px;
+  text-align: right;
+  font-weight: 300;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #ddd;
+}
+.bg-green {
+  background-color: #00acac!important;
+}
+.bg-blue {
+  background-color: #348fe2!important;
+}
+.bg-purple {
+  background-color: #727cb6!important;
+}
+.bg-red {
+  background-color: #ff5b57!important;
+}
+.profile_box {
+  background-color: #f3f3f3;
+  border-radius: 3px;
+}
+.profile_box h4 {
+  color: #333333;
+  font-weight: 100;
+  text-align: center;
+}
+.profile_box img {
+  border-radius: 50%;
+}
+.profile_box .profile-label {
+  text-align: center;
+}
+.checkbox-nice {
+  padding-top: 10px;
+}
+.checkbox-nice label {
+  font-size: 0.875em;
+  font-weight: 400;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 15px;
+  position: relative;
+  padding-left: 30px;
+  line-height: 24px;
+}
+.checkbox-nice label::before {
+  content: "";
+  display: inline-block;
+  height: 25px;
+  left: 0;
+  margin-right: 10px;
+  position: absolute;
+  width: 25px;
+  border: 2px solid #dcdcdc;
+  line-height: 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.checkbox-nice input[type="checkbox"] {
+  display: none;
+}
+.checkbox-nice input[type="checkbox"]:checked + label::before {
+  color: #707478;
+  content: "✓";
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  height: 25px;
+  width: 25px;
+}
+.checkbox-nice a {
+  font-size: 12px;
+  line-height: 26px;
+}
+.table {
+  font-size: 100%;
+}
+#calendar {
+  background-color: #fff;
+}
+#calendar .my_calendar {
+  margin-top: 20px;
+}
