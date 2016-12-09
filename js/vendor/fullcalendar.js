@@ -9378,7 +9378,7 @@ var View = FC.View = Class.extend(EmitterMixin, ListenerMixin, {
 
 	handleDocumentMousedown: function(ev) {
 		if (isPrimaryMouseButton(ev)) {
-			this.processUnselect(ev);
+			// this.processUnselect(ev);
 		}
 	},
 

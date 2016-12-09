@@ -1,4 +1,4 @@
-<div id="calendar" class="container-fluid">
+<div id="calendar" class="container-fluid" style="padding-top: 30px">
     <div class="col-md-2">
         <form action="">
             <div class="form-group">
@@ -17,9 +17,15 @@
                 <label for="">Location</label>
                 <input type="text" class="form-control" ng-model="eventData.location">
             </div>
+
+            <div class="form-group" ng-repeat="a in attendees">
+                <label for="">Attendee</label>
+                <input type="text" class="form-control" ng-model="a.email">
+            </div>
             <div class="form-group">
                 <label for="">Description</label>
-                <textarea name="" id="" cols="30" rows="10" class="form-control" ng-model="eventData.description"></textarea>
+                    <textarea name="" id="" cols="30" rows="10" class="form-control"
+                              ng-model="eventData.description"></textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" ng-click="createEvent()" type="button">Submit</button>
