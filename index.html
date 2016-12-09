@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>My Mail</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
+    <!-- build:css css/mymail.min.css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/fullcalendar.min.css">
     <link rel="stylesheet" href="css/toastr.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- endbuild -->
 
 </head>
 <body ng-app="app">
@@ -26,12 +28,13 @@
 <script src="js/vendor/angular-ui-router.js"></script>
 <script src="js/vendor/toastr.js"></script>
 
-
+<!-- build:js js/optimized.js -->
 <script src="js/src/app.js"></script>
 <script src="js/src/controllers/loginController.js"></script>
 <script src="js/src/controllers/calendarController.js"></script>
 <script src="js/src/directives/calendarDirective.js"></script>
 <script src="js/src/services/authService.js"></script>
+<!-- endbuild -->
 
 <script src="https://apis.google.com/js/client.js?onload=checkAuth">
 </script>

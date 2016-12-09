@@ -101,7 +101,7 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
         location: '',
         description: ''
       };
-
+      $scope.$apply();
       toastr.success('Event Created successfully', 'Success');
 
     });

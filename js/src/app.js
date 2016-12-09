@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ui.router']);
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/login');
   $stateProvider
     .state('login', {
@@ -14,4 +14,4 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'calendarController'
     });
 
-});
+}]);
