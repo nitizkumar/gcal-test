@@ -3,14 +3,22 @@ app.directive('fullCalendar', function () {
     restricts: 'E',
     scope:{
       getEvent:'&',
-      loadEventForWeek:'&',
-      loadEventForDay:'&',
+      loadEvent:'&',
       setTimeRange:'&',
       update:'&'
     },
     link: function ($scope, $elem, $attr) {
 
       console.log($scope.events);
+
+      var FC = $.fullCalendar;
+
+      FC.sourceFetchers.push(function(sourceOptions, start, end, timezone) {
+        console.log(sourceOptions);
+        $scope.loadEvent({start:start,end:end});
+      });
+
+
 
       $($elem).fullCalendar({
         header: {
@@ -31,25 +39,6 @@ app.directive('fullCalendar', function () {
             end: end
           };
 
-        },
-        onNext:function(date,viewName){
-          if(viewName === 'agendaWeek'){
-            $scope.loadEventForWeek({date:date});
-          }else{
-            $scope.loadEventForDay({date:date});
-          }
-        },
-        onPrev:function(date,viewName){
-          if(viewName === 'agendaWeek'){
-            $scope.loadEventForWeek({date:date});
-          }else{
-            $scope.loadEventForDay({date:date});
-          }
-        },
-        navLinkDayClick: function(date, jsEvent) {
-          console.log('day', date.format()); // date is a moment
-          var view = $($elem).data('fullCalendar').zoomTo(date,'day');
-          return true;
         },
         eventDrop:function(event, delta, revertFunc) {
           console.log(event);

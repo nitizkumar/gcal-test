@@ -25,9 +25,9 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
   };
 
   var _self = this;
-  $scope.loadEventForWeek = function (start) {
+  $scope.loadEventForDuration = function (start,end) {
     var start = moment(new Date(start.toDate()));
-    var end = moment(start).endOf('week');
+    var end = moment(new Date(end.toDate()));
     var found = false;
     _self.loadedWeeks.forEach(function (elem) {
       if (elem.start.isSame(start, 'day')) {
@@ -92,6 +92,8 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
     });
 
     request.execute(function (event) {
+
+
       $scope.$broadcast('eventAdded',$scope.eventData);
 
       $scope.eventData = {
@@ -126,7 +128,8 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
   }
 
   var start = moment().startOf('week');
+  var end = moment().endOf('week');
 
-  $scope.loadEventForWeek(start);
+  $scope.loadEventForDuration(start,end);
 
 }]);

@@ -9378,7 +9378,7 @@ var View = FC.View = Class.extend(EmitterMixin, ListenerMixin, {
 
 	handleDocumentMousedown: function(ev) {
 		if (isPrimaryMouseButton(ev)) {
-			// this.processUnselect(ev);
+			this.processUnselect(ev);
 		}
 	},
 
@@ -10562,7 +10562,6 @@ function Calendar_constructor(element, overrides) {
 	// If not given a viewType, keep the current view but render different dates.
 	// Accepts an optional scroll state to restore to.
 	function renderView(viewType, forcedScroll) {
-
 		ignoreWindowResize++;
 
 		var needsClearView = currentView && viewType && currentView.type !== viewType;
@@ -10843,20 +10842,12 @@ function Calendar_constructor(element, overrides) {
 
 	function prev() {
 		date = currentView.computePrevDate(date);
-		if(typeof t.options.onNext === 'function'){
-			var handler = t.options.onPrev;
-			handler(date,getView().name);
-		}
 		renderView();
 	}
 
 
 	function next() {
 		date = currentView.computeNextDate(date);
-		if(typeof t.options.onNext === 'function'){
-			var handler = t.options.onNext;
-			handler(date,getView().name);
-		}
 		renderView();
 	}
 
@@ -11142,7 +11133,7 @@ Calendar.defaults = {
 	endParam: 'end',
 	timezoneParam: 'timezone',
 
-	timezone: 'local',
+	timezone: false,
 
 	//allDayDefault: undefined,
 
