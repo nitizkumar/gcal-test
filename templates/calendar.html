@@ -18,9 +18,17 @@
                 <input type="text" class="form-control" ng-model="eventData.location">
             </div>
 
-            <div class="form-group" ng-repeat="a in attendees">
+            <div class="form-group" >
                 <label for="">Attendee</label>
-                <input type="text" class="form-control" ng-model="a.email">
+                <input type="text" class="form-control" ng-model="email">
+                <button class="btn" ng-click="add()" type="button">Add</button>
+            </div>
+
+            <div class="form-group" ng-repeat="a in attendees">
+                <span >
+                    {{a.email}}
+                </span>
+                <span><i class="glyphicon glyphicon-minus delete_icon" ng-click="remove($index)"></i></span>
             </div>
             <div class="form-group">
                 <label for="">Description</label>

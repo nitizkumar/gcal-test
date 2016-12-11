@@ -8,6 +8,7 @@ app.controller('loginController', ['$scope', '$http', '$state','authService',fun
     if(window.gapi == undefined){
       // alert('No Network');
       $state.go('calendar');
+      return;
     }
 
     gapi.auth.authorize(

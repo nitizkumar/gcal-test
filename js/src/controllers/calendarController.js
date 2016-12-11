@@ -5,7 +5,7 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
     return;
   }
 
-  $scope.attendees = [{}];
+  $scope.attendees = [];
 
   $scope.eventData = {
     start: '',
@@ -20,14 +20,14 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
   $scope.events = [];
 
 
-  $scope.setTimeRange = function(start,end){
+  $scope.setTimeRange = function (start, end) {
     $scope.eventData.start = start.format();
     $scope.eventData.end = end.format();
     $scope.$apply();
   };
 
   var _self = this;
-  $scope.loadEventForDuration = function (start,end) {
+  $scope.loadEventForDuration = function (start, end) {
     var start = moment(new Date(start.toDate()));
     var end = moment(new Date(end.toDate()));
     var found = false;
@@ -63,8 +63,8 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
             title: elem.summary,
             start: moment(elem.start.dateTime),
             end: moment(elem.end.dateTime),
-            id:elem.id,
-            sourceEvent:elem
+            id: elem.id,
+            sourceEvent: elem
           };
           $scope.events.push(eventData);
 
@@ -89,26 +89,26 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
       'end': {
         'dateTime': $scope.eventData.end
       },
-      'attendees':attendees,
-      'sendNotifications':true
+      'attendees': attendees,
+      'sendNotifications': true
     }
 
     $scope.attendees.forEach(function (elem) {
       if (elem.email != undefined && elem.email.trim()) {
-        attendees.push({'email':elem.email});
+        attendees.push({'email': elem.email});
       }
     });
 
     var request = gapi.client.calendar.events.insert({
       'calendarId': 'primary',
       'resource': evt,
-      'sendNotifications':true
+      'sendNotifications': true
     });
 
     request.execute(function (event) {
 
 
-      $scope.$broadcast('eventAdded',$scope.eventData);
+      $scope.$broadcast('eventAdded', $scope.eventData);
 
       $scope.eventData = {
         start: '',
@@ -117,17 +117,31 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
         location: '',
         description: ''
       };
+
+      $scope.attendees = [];
+
       $scope.$apply();
       toastr.success('Event Created successfully', 'Success');
 
     });
   }
 
-  $scope.updateEvent = function(sourceEvent){
+  $scope.add = function () {
+    if ($scope.email.trim()) {
+      $scope.attendees.push({email: $scope.email});
+      $scope.email = '';
+    }
+  },
+
+    $scope.remove = function (index) {
+      $scope.attendees.splice(index, 1);
+    }
+
+  $scope.updateEvent = function (sourceEvent) {
 
     var request = gapi.client.calendar.events.update({
       'calendarId': 'primary',
-      'eventId':sourceEvent.id,
+      'eventId': sourceEvent.id,
       'resource': sourceEvent
     });
 
@@ -144,6 +158,6 @@ app.controller('calendarController', ['$scope', '$http', '$state', 'authService'
   var start = moment().startOf('week');
   var end = moment().endOf('week');
 
-  $scope.loadEventForDuration(start,end);
+  $scope.loadEventForDuration(start, end);
 
 }]);
